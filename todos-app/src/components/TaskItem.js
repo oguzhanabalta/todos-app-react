@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
+}));
+
+
 
 export default class TaskItem extends Component {
+  
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -8,6 +25,7 @@ export default class TaskItem extends Component {
       isEditing: false,
     };
   }
+  
   setEditingState = (isEditing) => {
     this.setState({ isEditing: isEditing });
   };
@@ -25,8 +43,10 @@ export default class TaskItem extends Component {
     this.props.editTask(this.props.id, this.state.task);
     this.setState({ isEditing: false });
   };
+  
   render() {
     return (
+      
       <tr>
         {this.state.isEditing ? (
           <>
